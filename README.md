@@ -1,4 +1,5 @@
 # calculator
+
 This project is assigned by The Odin Project and will do the following:
     - User can interact with an interface that has numbers [0, 9]
     - There are operations such as:
