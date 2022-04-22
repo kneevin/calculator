@@ -22,11 +22,21 @@ This project is assigned by The Odin Project and will do the following:
 
 # PSEUDOCODE: planning & user loop
 
-Complete user loop
-
 ```mermaid
-flowchart TB
-	A[Interface displays 0] -->|Num. is pressed| B[Interface updates]
-	A -->|Operator is pressed| C[Error is displayed]
-	C --> A
+flowchart
+	subgraph ide1[Buttons]
+		numeric[Number]
+		oper[Operator]
+	end
+	subgraph ide2[Variables]
+		subgraph ide3[Functions]
+			update{Adds to front of display value}
+			error{Error is displayed} --> nullify{Sets to null}
+		end
+		update --> display[(Display value)]
+		nullify --> display
+		eval[(Eval string)]
+	end
+	init[Interface initializes] --> nullify
+	numeric -->|Passes| update
 ```
