@@ -21,6 +21,25 @@ This project is assigned by The Odin Project and will do the following:
   - Interface displays 9
 
 # PSEUDOCODE: planning & user loop
+The evaluation array is the most important thing here, it's: [ (1st number), (operator), (2nd number) ]
+User interface does the following:
+  - Listens for 1st number pressed
+    - Once pressed, it will keep appending to the first number until an operator is pressed
+  - Once an operator is pressed, it will append the entire first number to the array, then appends the operator to the 2nd element
+  - Then, it listens for more numbers, doing the appending
+  - Then, an operator is pressed, it will join the evaluation array into a string, evaluate it, set that to the 1st number of the array, then append the operator to the 2nd element
+  - Then continue this loop
+
+```mermaid
+flowchart LR
+  subgraph ide1["while input == numeric"]
+    numeric["Numbers [0, 9]"]
+  end
+  numeric --> ele1[("1st Element")]
+```
+
+# OLD LOOP (incomplete)
+
 ```mermaid
 flowchart LR
 init(("Interface (re)initializes")) --> nullifyDisplay
@@ -34,7 +53,7 @@ init --> nullifyEval
 	subgraph ide2["Evaluation / Display"]
     lastOper[(Last Operator)]
     display[(displayValueStr)]
-    displayPassed{Display value is appended} --> 
+    displayPassed{Display value is appended} -->
     operPassed{Operator is appended}
 		eval[(Eval string)]
 	end
@@ -43,12 +62,9 @@ init --> nullifyEval
 		error{Error is displayed} --> nullifyDisplay{Sets display value to NULL}
     nullifyEval{Sets eval string to NULL}
 	end
-  subgraph ide4[Operator Conditions]
-    displayIsNull[display value == NULL]
+  subgraph ide4[Conditions]
     displayNotNull[display value != NULL] --> displayPassed
-  end
-  subgraph ide5[Equals Conditions]
-  
+    lastOperNotNull[lastOper != NULL]
   end
 
   nullifyDisplay --> display
@@ -57,7 +73,7 @@ init --> nullifyEval
   displayNotNull --> nullifyDisplay
   operPassed -->|"displayValueStr + operStr"| eval
   operPassed -->|"operStr"| lastOper
-  oper -->|pressed: passes oper. | ide4
+  oper -->|pressed: passes oper. | displayNotNull
 	numeric -->|pressed: passes num. | update
-  equals --> |pressed| ide5
+  equals --> |pressed| lastOperNotNull
 ```
