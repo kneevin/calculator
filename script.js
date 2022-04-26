@@ -27,7 +27,8 @@ function operatorButtonListener(oper) {
         // console.log(evalArr)
     }else{ // 2nd number does exist, thus evaluate then append the new operator to evalArr 2nd element 
         evalArr[0] = String(eval(evalArr.join(''))) // turns evalArr into string, evaluates it, then sets that to 1st element
-        evalArr[1], evalArr[2] = '', '' // reseting array
+        evalArr[1] = oper // reseting array
+        evalArr[2] = '' // removing number
         displayStr.textContent = evalArr[0] // displays result
     }
 }
@@ -37,12 +38,14 @@ function assignListeners() {
     document.querySelectorAll('.number-btn').forEach(element => {
         element.addEventListener("click", () => {
             numericButtonListener(element.textContent)
+            console.log(evalArr)
         })
     });
     // assigning operatorButtonListeners to the buttons /w operators (/, x, -, +)
     document.querySelectorAll('.operator-btn').forEach(element => {
         element.addEventListener("click", () => {
             operatorButtonListener((element.textContent != 'x') ? element.textContent : '*')
+            console.log(evalArr)
         })
     })
 }
