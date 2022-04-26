@@ -33,6 +33,12 @@ function operatorButtonListener(oper) {
     }
 }
 
+// when the negative/positive button is clicked, it will either add or remove a (-) to the displayStr
+function negativeListener(){
+    // displayStr.textContent = String(-parseFloat(displayStr.textContent))
+    
+}
+
 function assignListeners() {
     // assigning numericButtonListeners to the buttons with numbers
     document.querySelectorAll('.number-btn').forEach(element => {
@@ -48,6 +54,8 @@ function assignListeners() {
             console.log(evalArr)
         })
     })
+    // assigning negative toggle on the 
+    document.querySelector('.pos-neg-btn').addEventListener("click", negativeListener)
 }
 
 assignListeners()
