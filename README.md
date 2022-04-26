@@ -32,7 +32,7 @@ init --> nullifyEval
     equals["Equals (=)"]
 	end
 	subgraph ide2["Evaluation / Display"]
-    lastOper[(Last Operator)]
+    lastOper[(lastOper)]
     display[(displayValueStr)]
     displayPassed{Display value is appended} --> 
     operPassed{Operator is appended}
@@ -44,11 +44,12 @@ init --> nullifyEval
     nullifyEval{Sets eval string to NULL}
 	end
   subgraph ide4[Operator Conditions]
-    displayIsNull[display value == NULL]
-    displayNotNull[display value != NULL] --> displayPassed
+    displayIsNull[displayStr == NULL]
+    displayNotNull[displayStr != NULL] --> displayPassed
   end
   subgraph ide5[Equals Conditions]
-  
+    lastOpeIsNull["lastOper == NULL"]
+    lastOpeNotNull["lastOper != NULL"]
   end
 
   nullifyDisplay --> display
