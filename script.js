@@ -48,6 +48,12 @@ function negativeListener() {
     }
 }
 
+// resets everything
+function resetListener(){
+    evalArr = [NaN, '', '']
+    displayStr.textContent = '0'
+}
+
 function assignListeners() {
     // assigning numericButtonListeners to the buttons with numbers
     document.querySelectorAll('.number-btn').forEach(element => {
@@ -65,6 +71,9 @@ function assignListeners() {
     })
     // assigning negative toggle
     document.querySelector('.pos-neg-btn').addEventListener("click", negativeListener)
+
+    // assigning clear button
+    document.querySelector('.clear-btn').addEventListener("click", resetListener)
 }
 
 assignListeners()
