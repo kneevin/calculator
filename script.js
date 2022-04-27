@@ -54,7 +54,13 @@ function resetListener(){
     displayStr.textContent = '0'
 }
 
+// the undo function utilizes a dictionary along with functions
+undoDictionary = {
+    
+}
+
 function assignListeners() {
+    lastAction = 'none'
     // assigning numericButtonListeners to the buttons with numbers
     document.querySelectorAll('.number-btn').forEach(element => {
         element.addEventListener("click", () => {
@@ -69,6 +75,7 @@ function assignListeners() {
             console.log(evalArr)
         })
     })
+
     // assigning negative toggle
     document.querySelector('.pos-neg-btn').addEventListener("click", negativeListener)
 
