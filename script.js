@@ -42,9 +42,10 @@ function negativeListener() {
     } else {
         displayStr.textContent = displayStr.textContent.slice(1)
     }
-    // if the second value is being stored, multiply by -1 then convert back to string
-    if (evalArr[2]) {
-        evalArr[2] = String(evalArr[2] * -1)
+    if(evalArr[1] && !evalArr[2]){ // if 1st evalArr element is already stored
+        evalArr[0] = String(evalArr[0] * -1)
+    }else{
+        evalArr[2] = String(evalArr[2] * -1) // if the second value is being stored, multiply by -1 then convert back to string
     }
 }
 
